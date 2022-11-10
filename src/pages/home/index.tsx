@@ -1,7 +1,13 @@
 import React from 'react'
+import { CoffeeList } from './components/CoffeeList'
+import { IntroCoffee } from './components/IntroCoffee'
 
 export function Home() {
+
     return (
-        <h1>Hello Work</h1>
+        <>
+            <IntroCoffee />
+            <CoffeeList />
+        </>
     )
 }
