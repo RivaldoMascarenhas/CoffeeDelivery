@@ -32,8 +32,8 @@ const PatternAction =  styled.a`
 
 `
 export const Location =  styled(PatternAction)`
-    background-color: #EBE5F9;
-    color: #6029D4;
+    background-color: ${(props) =>  props.theme ['purple-light']};
+    color: ${(props) =>  props.theme ['purple-dark']};
 
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
@@ -50,13 +50,15 @@ export const Location =  styled(PatternAction)`
     }
 `
 export const CartAction =  styled(PatternAction)`
-    background-color: #F1E9C9;
+    background-color: ${(props) =>  props.theme ['yellow-light']};;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
     cursor: pointer;
     
     svg> path{
-        fill: white;
+        fill: ${(props) =>  props.theme ['white']};
     }
-    
+    &:hover svg> path {
+        fill: ${(props) =>  props.theme ['yellow']};
+    }
 `

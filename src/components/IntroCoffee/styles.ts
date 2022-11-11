@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HomeContainer = styled.main`
+export const HomeContainer = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
@@ -36,24 +36,18 @@ list-style: none;
 }
 `
 type buttonVariantProps = {
-    variant: 'orange' | 'yellow' | "purple" | "gray"
+    variant: 'yellow_dark' | 'yellow' | "purple" | "base_text"
 }
-const buttonVariant = {
-    orange: "#C47F17",
-    yellow: "#DBAC2C",
-    purple: "#8047F8",
-    gray: "#574F4D"
-}
+
 
 export const BenefitIcon = styled.span<buttonVariantProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 100%;
+    border-radius: 50%;
     padding: 0.5rem;
-   ${(props) => {
-        return `background-color: ${buttonVariant[props.variant]}`
-    }};
+    background-color: ${(props) =>  props.theme[props.variant]};
+    
 `
 
 export const DescriptionCoffee = styled.article`
@@ -63,7 +57,9 @@ margin-bottom: 4.125rem;
 & > h1 {
     font-family: 'Baloo 2', cursive;
     font-weight: bold;
+    line-height: 130%;
     font-size: 3rem;
+    color: ${(props) =>  props.theme['base-title']};
 }
 &> p {
     font-size: 1.25rem;
