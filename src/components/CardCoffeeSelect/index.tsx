@@ -1,19 +1,37 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { BuyText, CoffesSelect, CoffesSelectContainer, ContainerSelect, ControlesContainer, ControlesContainerRemover, ItemStyled, TotalStyles } from './styles'
 import { ControlesBuy } from '../CardCoffee/styles'
 import { ButtonSubmit } from '../ButtonSubmit'
-import { ContextCoffee } from '../../context/context'
+import { Coffee, ContextCoffee } from '../../context/context'
+import { actions } from '../../redurcers/redurcer'
 
 
 export function CardCoffeeSelect() {
-    const { Coffees } = useContext(ContextCoffee)
+    const { state, dispatch } = useContext(ContextCoffee)
+    const [counter, setCounter] = useState(state.counter)
+
+    function decrement() {
+        setCounter((state) => state - 1)
+        dispatch({
+            type: actions.decrement,
+            playload: counter,
+        })
+    }
+    function increment() {
+        setCounter((state) => state + 1)
+        dispatch({
+            type: actions.increment,
+            playload: counter,
+        })
+    }
+
     return (
         <ContainerSelect>
             <h3>Cafés selecionados</h3>
             <div>
                 <div>
                     <CoffesSelect>
-                        {Coffees.map((item, index) => {
+                        {state.CoffeeSelect.map((item: Coffee, index) => {
 
                             return (
                                 <CoffesSelectContainer key={index}>
@@ -23,9 +41,9 @@ export function CardCoffeeSelect() {
                                             <p>{item.name}</p>
                                             <ControlesContainer>
                                                 <ControlesBuy>
-                                                    <span>-</span>
-                                                    <p>0</p>
-                                                    <span>+</span>
+                                                    <span onClick={() => { decrement() }} >-</span>
+                                                    <p>{state.counter}</p>
+                                                    <span onClick={() => { increment() }}>+</span>
                                                 </ControlesBuy>
                                                 <ControlesContainerRemover>
                                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +53,7 @@ export function CardCoffeeSelect() {
                                                         <path fillRule="evenodd" clipRule="evenodd" d="M3.5 3.5C3.77614 3.5 4 3.72386 4 4V13.5H12V4C12 3.72386 12.2239 3.5 12.5 3.5C12.7761 3.5 13 3.72386 13 4V13.5C13 13.7652 12.8946 14.0196 12.7071 14.2071C12.5196 14.3946 12.2652 14.5 12 14.5H4C3.73478 14.5 3.48043 14.3946 3.29289 14.2071C3.10536 14.0196 3 13.7652 3 13.5V4C3 3.72386 3.22386 3.5 3.5 3.5Z" fill="#8047F8" />
                                                         <path fillRule="evenodd" clipRule="evenodd" d="M5.43934 1.93934C5.72064 1.65804 6.10218 1.5 6.5 1.5H9.5C9.89782 1.5 10.2794 1.65804 10.5607 1.93934C10.842 2.22064 11 2.60217 11 3V4C11 4.27614 10.7761 4.5 10.5 4.5C10.2239 4.5 10 4.27614 10 4V3C10 2.86739 9.94732 2.74021 9.85355 2.64645C9.75979 2.55268 9.63261 2.5 9.5 2.5H6.5C6.36739 2.5 6.24022 2.55268 6.14645 2.64645C6.05268 2.74021 6 2.86739 6 3V4C6 4.27614 5.77614 4.5 5.5 4.5C5.22386 4.5 5 4.27614 5 4V3C5 2.60217 5.15804 2.22064 5.43934 1.93934Z" fill="#8047F8" />
                                                     </svg>
-                                                    <p>REMOVER</p>
+                                                    <p onClick={() => { dispatch({ type: actions.delete, playload: item, }) }}>REMOVER</p>
                                                 </ControlesContainerRemover>
                                             </ControlesContainer>
                                         </div>

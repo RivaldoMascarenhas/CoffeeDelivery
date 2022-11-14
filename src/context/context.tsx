@@ -1,6 +1,6 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import { createContext, ReactNode } from 'react'
-import { coffeeReducer } from '../redurcers/redurcer'
+import { actions, coffeeReducer } from '../redurcers/redurcer'
 
 export interface Coffee {
     tags: string[],
@@ -11,14 +11,10 @@ export interface Coffee {
     amount: number,
 }
 
-interface ActionTypes {
-    type: string,
-    playload: Coffee
-}
 interface ContextCoffeeType {
-    Coffees: Array<Coffee>,
-    dispatch: (value: ActionTypes) => void,
     listCoffee: Array<Coffee>,
+    state: TypesStates,
+    dispatch: (value: any) => void,
 }
 
 
@@ -146,15 +142,22 @@ const listCoffee: Array<Coffee> = [
 
 ]
 
+interface TypesStates {
+    counter: number,
+    CoffeeSelect: Coffee[] | [],
+}
+
+const initial: TypesStates = {
+    counter: 1,
+    CoffeeSelect: [],
+}
+
 export function Context({ children }: ContextProps) {
-
-    const initial: Array<Coffee> = [];
-
-    const [Coffees, dispatch] = useReducer(coffeeReducer, initial)
+    const [state, dispatch] = useReducer(coffeeReducer, initial)
 
     return (
 
-        <ContextCoffee.Provider value={{ Coffees, dispatch, listCoffee }}>
+        <ContextCoffee.Provider value={{ listCoffee, state, dispatch }}>
             {children}
         </ContextCoffee.Provider>
 

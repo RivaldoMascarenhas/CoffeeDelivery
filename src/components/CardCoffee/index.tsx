@@ -1,12 +1,29 @@
-import React from 'react'
-import { Buy, BuyContainer, BuyDivStyled, ControlesBuy, DivStyled, ItemContainer } from './styles'
+import React, { useContext, useState } from 'react'
+import { Buy, BuyContainer, BuyDivStyled, DivStyled, ItemContainer } from './styles'
 import ShoppingCartSimple from '../../assets/ShoppingCartSimple.png'
 import { Tags } from '../tags'
-import { Coffee } from '../../context/context'
+import { Coffee, ContextCoffee } from '../../context/context'
+import { actions } from '../../redurcers/redurcer'
+import { Controles } from '../ControlesBuy'
+
 
 export function CardCoffee(item: Coffee) {
-    // const {  } = useContext(ContextCoffee)
+
+    const { dispatch, state } = useContext(ContextCoffee)
+    const CoffeeSelect: Coffee = {
+        amount: state.counter,
+        buy: item.buy,
+        description: item.description,
+        img: item.img,
+        name: item.name,
+        tags: item.tags,
+    }
+
+    function submit() {
+        dispatch({ type: actions.submitCard, playload: CoffeeSelect })
+    }
     return (
+
         <ItemContainer>
             <DivStyled>
                 <img src={item.img} alt={item.name} />
@@ -22,16 +39,12 @@ export function CardCoffee(item: Coffee) {
                     </span>
                 </p>
                 <BuyDivStyled >
-                    <ControlesBuy>
-                        <span >-</span>
-                        <p>{item.amount}</p>
-                        <span>+</span>
-                    </ControlesBuy>
-                    <Buy>
+                    <Controles />
+                    <Buy onClick={() => { submit() }}>
                         <img src={ShoppingCartSimple} />
                     </Buy>
                 </BuyDivStyled >
             </BuyContainer>
-        </ItemContainer>
+        </ItemContainer >
     )
 }

@@ -86,6 +86,7 @@ export const Buy = styled.div`
     padding: 0.5rem;
     border-radius: 8px;
     background-color: ${(props) => props.theme["purple-dark"]};
+    cursor: pointer;
     & > img {
         width: 80%;
     }
