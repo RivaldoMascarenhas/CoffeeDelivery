@@ -2,43 +2,41 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.div`
     display: flex;
-    justify-content: center;
+    margin-bottom: 3rem;
     width: 100%;
-    padding: 5.75rem;
-    
-    
-`
+    & > section {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+`;
 
 export const Banner = styled.div`
-display: flex;
-align-items: center;
-width: 100%;
-
-& > img {
-    width: 29rem
-}
-`
-export const BenefitContainer = styled.ul`
-display: flex;
-flex-direction: row;
-gap: 2rem;
-
-width: 49rem;
-flex-wrap: wrap;
-list-style: none;
-
-
-& > li {
     display: flex;
-    width: 20rem;
     align-items: center;
-    gap: 1rem;
-}
-`
-type buttonVariantProps = {
-    variant: 'yellow_dark' | 'yellow' | "purple" | "base_text"
-}
+    justify-content: center;
+    width: 50%;
 
+    & > img {
+        width: 29rem;
+    }
+`;
+export const BenefitContainer = styled.ul`
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.9rem;
+
+    & > li {
+        display: flex;
+        width: 47%;
+        align-items: center;
+        gap: 0.5rem;
+    }
+`;
+type buttonVariantProps = {
+    variant: "yellow_dark" | "yellow" | "purple" | "base_text";
+};
 
 export const BenefitIcon = styled.span<buttonVariantProps>`
     display: flex;
@@ -46,22 +44,20 @@ export const BenefitIcon = styled.span<buttonVariantProps>`
     justify-content: center;
     border-radius: 50%;
     padding: 0.5rem;
-    background-color: ${(props) =>  props.theme[props.variant]};
-    
-`
+    background-color: ${(props) => props.theme[props.variant]};
+`;
 
 export const DescriptionCoffee = styled.article`
+    margin-bottom: 4.125rem;
 
-margin-bottom: 4.125rem;
-
-& > h1 {
-    font-family: 'Baloo 2', cursive;
-    font-weight: bold;
-    line-height: 130%;
-    font-size: 3rem;
-    color: ${(props) =>  props.theme['base-title']};
-}
-&> p {
-    font-size: 1.25rem;
-}
-`
+    & > h1 {
+        font-family: "Baloo 2", cursive;
+        font-weight: bold;
+        line-height: 130%;
+        font-size: 3rem;
+        color: ${(props) => props.theme["base-title"]};
+    }
+    & > p {
+        font-size: 1.25rem;
+    }
+`;

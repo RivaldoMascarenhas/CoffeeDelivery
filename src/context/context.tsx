@@ -1,17 +1,42 @@
-export interface typesOfCoffee {
+import React, { useReducer } from 'react'
+import { createContext, ReactNode } from 'react'
+import { coffeeReducer } from '../redurcers/redurcer'
+
+export interface Coffee {
     tags: string[],
     name: string,
     description: string,
     img: string,
     buy: number,
+    amount: number,
 }
-export const typesCoffee: Array<typesOfCoffee> = [
+
+interface ActionTypes {
+    type: string,
+    playload: Coffee
+}
+interface ContextCoffeeType {
+    Coffees: Array<Coffee>,
+    dispatch: (value: ActionTypes) => void,
+    listCoffee: Array<Coffee>,
+}
+
+
+interface ContextProps {
+    children: ReactNode
+}
+
+
+export const ContextCoffee = createContext({} as ContextCoffeeType)
+
+const listCoffee: Array<Coffee> = [
     {
         tags: ['TRADICIONAL'],
         name: 'Expresso Tradicional',
         description: 'O tradicional café feito com água quente e grãos moídos',
         img: './Type=Expresso.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL'],
@@ -19,6 +44,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Expresso diluído, menos intenso que o tradicional',
         img: './Type=Americano.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL'],
@@ -26,6 +52,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Café expresso tradicional com espuma cremosa',
         img: './Type=Expresso Cremoso.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL', 'GELADO'],
@@ -33,6 +60,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Bebida preparada com café expresso e cubos de gelo',
         img: './Type=Expresso Cremoso.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL', 'COM LEITE'],
@@ -40,6 +68,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Meio a meio de expresso tradicional com leite vaporizado',
         img: './Type=Café com Leite.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL', 'COM LEITE'],
@@ -47,6 +76,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
         img: './Type=Latte.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL', 'COM LEITE'],
@@ -54,6 +84,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
         img: './Type=Capuccino.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL', 'COM LEITE'],
@@ -61,6 +92,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Café expresso misturado com um pouco de leite quente e espuma',
         img: './Type=Macchiato.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL', 'COM LEITE'],
@@ -68,6 +100,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Café expresso com calda de chocolate, pouco leite e espuma',
         img: './Type=Mochaccino.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['TRADICIONAL', 'COM LEITE'],
@@ -75,6 +108,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Bebida feita com chocolate dissolvido no leite quente e café',
         img: './Type=Chocolate Quente.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['ESPECIAL', 'ALCOÓLICO', 'GELADO'],
@@ -82,6 +116,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
         img: './Type=Cubano.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['ESPECIAL'],
@@ -89,6 +124,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Bebida adocicada preparada com café e leite de coco',
         img: './Type=Havaiano.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['ESPECIAL'],
@@ -96,6 +132,7 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Bebida preparada com grãos de café árabe e especiarias',
         img: './Type=Árabe.png',
         buy: 9.90,
+        amount: 0,
     },
     {
         tags: ['ESPECIAL', 'ALCOÓLICO'],
@@ -103,7 +140,24 @@ export const typesCoffee: Array<typesOfCoffee> = [
         description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
         img: './Type=Irlandês.png',
         buy: 9.90,
+        amount: 0,
     },
 
 
 ]
+
+export function Context({ children }: ContextProps) {
+
+    const initial: Array<Coffee> = [];
+
+    const [Coffees, dispatch] = useReducer(coffeeReducer, initial)
+
+    return (
+
+        <ContextCoffee.Provider value={{ Coffees, dispatch, listCoffee }}>
+            {children}
+        </ContextCoffee.Provider>
+
+    )
+}
+

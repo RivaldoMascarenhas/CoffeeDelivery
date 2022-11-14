@@ -1,4 +1,5 @@
 export const defaultTheme = {
+    
     white: '#FFFFFF',
     background : '#FAFAFA',
 
