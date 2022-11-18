@@ -7,7 +7,7 @@ export function Form() {
         <Wrapper>
             <AddressCard>
                 <h3>Complete seu pedido</h3>
-                <form>
+                <div >
                     <FormContainer>
 
                         <AddressInfo>
@@ -34,7 +34,6 @@ export function Form() {
                                 placeholder='CEP'
                                 autoComplete="on"
                                 autoFocus
-                                pattern="/^[0-9]{5}-[0-9]{3}$/"
                                 required /> <br />
                             <InputStyles type='text' width={93} name="Rua" placeholder='Rua' autoComplete="on" required /> <br />
                             <InputStyles type="text" width={20} name="Número" autoComplete="on" placeholder="Número" required />
@@ -45,7 +44,7 @@ export function Form() {
                         </div>
 
                     </FormContainer>
-                </form>
+                </div>
             </AddressCard>
             <FormContainer margin-top={1}>
                 <CardPayment />

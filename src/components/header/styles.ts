@@ -7,6 +7,9 @@ export const HeaderContainer = styled.header`
     width: 100%;
     height: 6.5rem;
     padding: 2rem 0rem;
+    & > div > img {
+        cursor: pointer;
+    }
 `;
 export const LeftContainer = styled.div`
     display: flex;
@@ -33,7 +36,6 @@ export const Location = styled(PatternAction)`
     padding: 0.625rem;
     gap: 0.5rem;
 
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 
     &:hover {
@@ -43,14 +45,24 @@ export const Location = styled(PatternAction)`
 `;
 export const CartAction = styled(PatternAction)`
     background-color: ${(props) => props.theme["yellow-light"]};
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
     cursor: pointer;
 
     svg > path {
-        fill: ${(props) => props.theme["white"]};
+        fill: ${(props) => props.theme["yellow_dark"]};
     }
     &:hover svg > path {
         fill: ${(props) => props.theme["yellow"]};
+    }
+
+    & > span {
+        position: absolute;
+        margin-left: 2rem;
+        margin-top: -2rem;
+        font-size: 0.75rem;
+        padding: 0 0.4rem 0 0.4rem;
+        border-radius: 50%;
+        background-color: ${(props) => props.theme["yellow_dark"]};
+        color: ${(props) => props.theme["white"]};
     }
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const CheckoutContainer = styled.div`
-display: flex;
-width: 100%;
-gap: 1rem;
-`
+export const CheckoutContainer = styled.form`
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+`;

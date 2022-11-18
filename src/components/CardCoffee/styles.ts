@@ -62,23 +62,39 @@ export const ControlesBuy = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 5rem;
-    background-color: ${(props) => props.theme["base-button"]};
-    gap: 1rem;
-    border-radius: 8px;
 
     & > span {
+        color: ${(props) => props.theme["base-title"]};
         display: flex;
         justify-content: center;
-        color: ${(props) => props.theme["purple"]};
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        cursor: pointer;
-    }
-    & > p {
-        color: ${(props) => props.theme["base-title"]};
+        align-items: center;
+        width: 2.3rem;
+        height: 2.7rem;
+        border: none;
+        background-color: ${(props) => props.theme["base-button"]};
     }
 `;
+const patternSpan = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1rem;
+    height: 2.7rem;
+    color: ${(props) => props.theme["purple"]};
+    background-color: ${(props) => props.theme["base-button"]};
+    cursor: pointer;
+`;
+
+export const SpanStyles = styled(patternSpan)`
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+`;
+
+export const SpanStyles02 = styled(patternSpan)`
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+`;
+
 export const Buy = styled.div`
     display: flex;
     justify-content: center;

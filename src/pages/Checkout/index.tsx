@@ -1,5 +1,5 @@
 import React from "react";
-import { CardCoffeeSelect } from "../../components/CardCoffeeSelect";
+import { CardCoffeeSelect } from "../../components/ListCoffeeSelect";
 import { Form } from "../../components/FormCoffee";
 import { CheckoutContainer } from "./styles";
 
