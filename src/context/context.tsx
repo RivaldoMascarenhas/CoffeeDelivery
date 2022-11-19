@@ -22,7 +22,15 @@ interface ContextCoffeeType {
 interface ContextProps {
     children: ReactNode
 }
-
+interface dataAddressType {
+    CEP: string;
+    Rua: string;
+    Número: number;
+    Complemento: string;
+    Bairro: string;
+    Cidade: string;
+    UF: string;
+}
 
 export const ContextCoffee = createContext({} as ContextCoffeeType)
 
@@ -159,11 +167,26 @@ const listCoffee: Array<Coffee> = [
 
 export interface TypesStates {
     CoffeeSelect: Coffee[],
+    dataAddress: dataAddressType,
+    dataPaygament: { type: string, label: string },
 
 }
 
 const initial: TypesStates = {
     CoffeeSelect: [],
+    dataAddress: {
+        CEP: '',
+        Rua: '',
+        Número: 0,
+        Complemento: '',
+        Bairro: '',
+        Cidade: '',
+        UF: '',
+    },
+    dataPaygament: {
+        type: '',
+        label: '',
+    },
 }
 
 export function Context({ children }: ContextProps) {

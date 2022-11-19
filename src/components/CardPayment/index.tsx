@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { ContextCoffee } from '../../context/context'
+import { actions } from '../../redurcers/redurcer'
 import { AddressInfo } from '../FormCoffee/styles'
 import { CardPaymentDid } from './CardPaymentDid'
 import { PaymentContainer } from './styles'
@@ -19,8 +21,17 @@ const options = [
 ]
 
 export function CardPayment() {
+
+    const { dispatch } = useContext(ContextCoffee)
+
     const [cardActive, setCardActive] = useState('')
 
+    if (cardActive != '') {
+        dispatch({
+            type: actions.setPayment,
+            playload: options.find((item) => item.type === cardActive),
+        })
+    }
     return (
         <>
             <AddressInfo>

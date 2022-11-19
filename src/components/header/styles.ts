@@ -10,6 +10,10 @@ export const HeaderContainer = styled.header`
     & > div > img {
         cursor: pointer;
     }
+    @media screen and (max-width: 1064px) {
+        width: 80%;
+        margin: 0 auto;
+    }
 `;
 export const LeftContainer = styled.div`
     display: flex;

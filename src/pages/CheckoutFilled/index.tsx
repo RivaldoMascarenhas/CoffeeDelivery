@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ContextCoffee } from '../../context/context'
 import { IconContainer, ListFilled, TitleFilled, WrapperFilled } from './styles'
 
 export function CheckoutFilled() {
+    const { state } = useContext(ContextCoffee)
     return (
         <>
             <TitleFilled>
@@ -21,8 +23,8 @@ export function CheckoutFilled() {
 
                                 </IconContainer>
                                 <div>
-                                    <p>Entrega em <strong>Rua João Daniel Martinelli, 102</strong></p>
-                                    <p>Farrapos - Porto Alegre, RS</p>
+                                    <p>Entrega em <strong> {state.dataAddress.Rua} , {state.dataAddress.Número}</strong></p>
+                                    <p>{state.dataAddress.Bairro} - {state.dataAddress.Cidade}, {state.dataAddress.UF}</p>
                                 </div>
                             </li>
                             <li>
@@ -48,7 +50,7 @@ export function CheckoutFilled() {
                                 </IconContainer>
                                 <div>
                                     <p>Pagamento na entrega</p>
-                                    <p><strong>Cartão de Crédito</strong></p>
+                                    <p><strong>{state.dataPaygament.type != '' ? state.dataPaygament.label : "Por favor, informe a forma de entrega"}</strong></p>
                                 </div>
                             </li>
                         </ul>

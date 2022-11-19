@@ -25,6 +25,9 @@ export const WrapperFilled = styled.div`
     & > div {
         width: 100%;
     }
+    @media screen and (max-width: 1064px) {
+        flex-direction: column;
+    }
 `;
 
 export const ListFilled = styled.div`

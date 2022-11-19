@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Coffee, ContextCoffee } from "../../context/context";
 import { actions } from "../../redurcers/redurcer";
 import { ControlesBuy, SpanStyles, SpanStyles02 } from "../CardCoffee/styles";
-import { BuyText, ControlesContainer } from "../ListCoffeeSelect/styles";
+import { BuyText, ControlesContainer } from "../FormCoffee/styles";
 import { CoffesSelectContainer, ControlesContainerRemover, ItemStyled } from "./styles";
 
 

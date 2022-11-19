@@ -9,6 +9,10 @@ export const Container = styled.div`
         font-weight: bold;
         margin-bottom: 3.375rem;
     }
+    @media screen and (max-width: 1064px) {
+        width: 100%;
+        align-items: center;
+    }
 `;
 export const ListContainer = styled.ul`
     display: flex;
@@ -18,4 +22,11 @@ export const ListContainer = styled.ul`
     column-gap: 2rem;
     row-gap: 4rem;
     list-style: none;
+
+    @media screen and (max-width: 1064px) {
+        width: 80%;
+        align-items: center;
+        margin-bottom: 0;
+        column-gap: 1rem;
+    }
 `;
