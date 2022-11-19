@@ -57,7 +57,7 @@ export function CheckoutFilled() {
                     </ListFilled>
                 </div>
                 <div>
-                    <img src='./public/illustration.png' />
+                    <img src="./public/Illustration.png" />
                 </div>
             </WrapperFilled>
         </>
