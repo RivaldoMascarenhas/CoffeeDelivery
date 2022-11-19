@@ -8,6 +8,14 @@ export const HomeContainer = styled.div`
         display: flex;
         flex-direction: column;
         width: 50%;
+
+        @media screen and (max-width: 1064px) {
+            width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 1064px) {
+        justify-content: center;
     }
 `;
 
@@ -19,6 +27,9 @@ export const Banner = styled.div`
 
     & > img {
         width: 29rem;
+    }
+    @media screen and (max-width: 1064px) {
+        display: none;
     }
 `;
 export const BenefitContainer = styled.ul`
