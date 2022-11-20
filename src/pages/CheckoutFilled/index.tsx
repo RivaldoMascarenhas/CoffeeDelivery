@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ContextCoffee } from '../../context/context'
 import { IconContainer, ListFilled, TitleFilled, WrapperFilled } from './styles'
+import Illustration from '.public/Illustration.png'
 
 export function CheckoutFilled() {
     const { state } = useContext(ContextCoffee)
@@ -57,7 +58,7 @@ export function CheckoutFilled() {
                     </ListFilled>
                 </div>
                 <div>
-                    <img src="./public/Illustration.png" />
+                    <img src='./public/Illustration.png' />
                 </div>
             </WrapperFilled>
         </>

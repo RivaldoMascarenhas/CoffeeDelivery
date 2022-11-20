@@ -15,6 +15,11 @@ export const TitleFilled = styled.div`
     & > span {
         font-size: 1.25rem;
     }
+
+    @media screen and (max-width: 1064px) {
+        line-height: 220%;
+        width: 100%;
+    }
 `;
 
 export const WrapperFilled = styled.div`
